@@ -20,11 +20,11 @@ restaurants_albany = ["Barcelona", "Black & Blue Steak and Crab", "Grappa '72", 
 
 modes_of_transportation = ["a car", "a bus", "a train", "walking"]
 
-entertainment_boston = [" Go to a Red Sox game", "Go to a Celtics game", "Go to a Bruins game", "Walk the Freedom trail"]
-entertainment_new_york = ["tour Ellis Island", "Visit 9/11 memorial", "Go to a Yankees game", "Just walk around the city"]
-entertainment_new_haven = ["Visit the Yale Center for British Art", "Go to Harkness Tower", "Go to Long Wharf Park", "Visit Vietnam Memorial Park"]
-entertainment_hartford = ["See a play at the Bushnell", "Go to a baseball game", "Take a ride on the carousel", "Visit the Wadworth Atheneum Museum"]
-entertainment_albany = ["Visit the Albany Institute of History", "Visit craft breweries", "See the Schuyler Mansion", "Tour the USS Slater"]
+entertainment_boston = ["going to a Red Sox game", "going to a Celtics game", "going to a Bruins game", "walking the Freedom trail"]
+entertainment_new_york = ["touring Ellis Island", "visiting 9/11 memorial", "going to a Yankees game", "just walking around the city"]
+entertainment_new_haven = ["visiting the Yale Center for British Art", "going to Harkness Tower", "going to Long Wharf Park", "visiting Vietnam Memorial Park"]
+entertainment_hartford = ["seeing a play at the Bushnell", "going to a baseball game", "taking a ride on the carousel", "visiting the Wadworth Atheneum Museum"]
+entertainment_albany = ["visiting the Albany Institute of History", "visiting craft breweries", "seeing the Schuyler Mansion", "touring the USS Slater"]
 
 import random
 
@@ -33,74 +33,334 @@ import random
 
 
 def location_picker(list):
-
-    destination = random.choice(destinations)    
+    location = random.choice(destinations) 
     valid_response = False
     print("Welcome to the Day Trip Generator! If you aren't sure what you want to do for your vacation, you have come to the right place!")
-    print(f"We have selected",  random.choice(destinations) , "for your destination! Does this sound good?")
+    print(f"We have selected",  location , "for your destination! Does this sound good?")(input("Enter y/n:"))
     user_response =  input("Enter y/n: ")
            
+
     if user_response == "y":
         print("Awesome! Glad that is decided. Let's move on!")
         valid_response = True
+        return location
                
         
     while valid_response == False:
         
         if user_response == "y":
             print("Awesome! Glad that is decided. Let's move on!")
-            valid_response = True   
+            valid_response = True  
+            return location 
                         
         elif user_response == "n":
-            print(f"oh, sorry you don't like this destination. No worries, we can try something else! How about", random.choice(destinations) + "?")
-            user_response = input("Enter y/n: ")    
-            
+            location = random.choice(destinations)
+            print(f"oh, sorry you don't like this destination. No worries, we can try something else! How about", location + "?")
+            user_response = input("Enter y/n: ")  
+              
+         
         else:
-            print("")
+            location = random.choice(destinations)
+            print(f"oh, sorry you don't like this destination. No worries, we can try something else! How about", location + "?")
+            user_response = input("Enter y/n: ") 
 
-location_picker(destinations)
+destination = location_picker(destinations)
 
 
 def transportation_picker(list):
+    select_transportation = random.choice(modes_of_transportation)
     valid_response = False
-    print(f"We have selected", random.choice(modes_of_transportation), "for your transportation option! Does this sound good?")
+    print(f"We have selected", select_transportation , "for your transportation option! Does this sound good?")
     user_response = input("Enter y/n: ")
 
     if user_response == "y":
         print("Awesome! Glad that is decided. Let's move on!")
         valid_response = True
+        return select_transportation
 
     while valid_response == False:
 
         if user_response =="y":
             print("Awesome! Glad that is decided. Let's move on!")
             valid_response = True
+            return select_transportation
         elif user_response == "n":
-            print(f"Oh, sorry you don't like that transportation. No worries, we can try something else! How about", random.choice(modes_of_transportation) + "?")
+            select_transportation = random.choice(modes_of_transportation)
+            print(f"Oh, sorry you don't like that transportation. No worries, we can try something else! How about", select_transportation + "?")
             user_response = input("Enter y/n: ")
+
         else:
-            print("")
+            select_transportation = random.choice(modes_of_transportation)
+            print(f"Oh, sorry you don't like that transportation. No worries, we can try something else! How about", select_transportation + "?")
+            user_response = input("Enter y/n: ")
+
         
-transportation_picker(modes_of_transportation)
+transportation = transportation_picker(modes_of_transportation)
 
+def entertainment_picker (list, list_one, list_two, list_three, list_four):
 
-def entertainment_boston(list):
-    valid_response = False
-    print(f"We have selected", random.choice(entertainment_boston), "for your entertainment option! Does this sound good?")
-    user_response = input("Enter y/n: ")
+    while destination == "Boston":
+        boston_entertainment = random.choice(entertainment_boston)
+        valid_response = False
+        print("We have selected", boston_entertainment, " for your entertainment option! Does this sounds good?")
+        user_response = input("Enter y/n: ")
 
-    if user_response == "y":
-        print("Awesome! Glad that is decided. Let's move on!")
-        valid_respone = True
-
-    while valid_response == False:
-
-        if user_response =="y":
-            print("Awesome! Glad that is decided. Let's move on!")
+        if user_response == "y":
+            print("Awesome! Glad that is decided. Let's move one!")
             valid_response = True
-        elif user_response == "n":
-            print(f"Oh, sorry you don't like that entertainment. No worries, we can try something else! How about", random.choice(entertainment_boston) + "?")
-            user_response = input("Enter y/n: ")
-        else:
-            print("")
+            return boston_entertainment
+
+        while valid_response == False:
+            if user_response == "y":
+                print("Awesome! Glad that is decided. Let's move one!")
+                valid_response = True
+                return boston_entertainment
+            elif user_response == "n":
+                boston_entertainment = random.choice(entertainment_boston)
+                print(f"Oh, sorry you don't like that entertainment. No worries, we can try something else! How about", boston_entertainment + "?")
+                user_response = input("Enter y/n: ")
+            else:
+                boston_entertainment = random.choice(entertainment_boston)
+                print(f"Oh, sorry you don't like that entertainment. No worries, we can try something else! How about", boston_entertainment + "?")
+                user_response = input("Enter y/n: ")
     
+    while destination == "New York City":
+        new_york_entertainment = random.choice(entertainment_new_york)
+        valid_response = False
+        print("We have selected", new_york_entertainment, " for your entertainment option! Does this sounds good?")
+        user_response = input("Enter y/n: ")
+
+        if user_response == "y":
+            print("Awesome! Glad that is decided. Let's move one!")
+            valid_response = True
+            return new_york_entertainment
+
+        while valid_response == False:
+            if user_response == "y":
+                print("Awesome! Glad that is decided. Let's move one!")
+                valid_response = True
+                return new_york_entertainment
+            elif user_response == "n":
+                new_york_entertainment = random.choice(entertainment_new_york)
+                print(f"Oh, sorry you don't like that entertainment. No worries, we can try something else! How about", new_york_entertainment + "?")
+                user_response = input("Enter y/n: ")
+            else:
+                new_york_entertainment = random.choice(entertainment_new_york)
+                print(f"Oh, sorry you don't like that entertainment. No worries, we can try something else! How about", new_york_entertainment + "?")
+                user_response = input("Enter y/n: ")
+    
+    while destination == "New Haven":
+        new_haven_entertainment = random.choice(entertainment_new_haven)
+        valid_response = False
+        print("We have selected", new_haven_entertainment, " for your entertainment option! Does this sounds good?")
+        user_response = input("Enter y/n: ")
+
+        if user_response == "y":
+            print("Awesome! Glad that is decided. Let's move one!")
+            valid_response = True
+            return new_haven_entertainment
+
+        while valid_response == False:
+            if user_response == "y":
+                print("Awesome! Glad that is decided. Let's move one!")
+                valid_response = True
+                return new_haven_entertainment
+            elif user_response == "n":
+                new_haven_entertainment = random.choice(entertainment_new_haven)
+                print(f"Oh, sorry you don't like that entertainment. No worries, we can try something else! How about", new_haven_entertainment + "?")
+                user_response = input("Enter y/n: ")
+            else:
+                new_haven_entertainment = random.choice(entertainment_new_haven)
+                print(f"Oh, sorry you don't like that entertainment. No worries, we can try something else! How about", new_haven_entertainment + "?")
+                user_response = input("Enter y/n: ")
+
+    while destination == "Hartford":
+        hartford_entertainment = random.choice(entertainment_hartford)
+        valid_response = False
+        print("We have selected", hartford_entertainment, " for your entertainment option! Does this sounds good?")
+        user_response = input("Enter y/n: ")
+
+        if user_response == "y":
+            print("Awesome! Glad that is decided. Let's move one!")
+            valid_response = True
+            return hartford_entertainment
+
+        while valid_response == False:
+            if user_response == "y":
+                print("Awesome! Glad that is decided. Let's move one!")
+                valid_response = True
+                return hartford_entertainment
+            elif user_response == "n":
+                hartford_entertainment = random.choice(entertainment_hartford)
+                print(f"Oh, sorry you don't like that entertainment. No worries, we can try something else! How about", hartford_entertainment + "?")
+                user_response = input("Enter y/n: ")
+            else:
+                hartford_entertainment = random.choice(entertainment_hartford)
+                print(f"Oh, sorry you don't like that entertainment. No worries, we can try something else! How about", hartford_entertainment + "?")
+                user_response = input("Enter y/n: ")
+    
+    while destination == "Albany":
+        albany_entertainment = random.choice(entertainment_albany)
+        valid_response = False
+        print("We have selected", albany_entertainment, " for your entertainment option! Does this sounds good?")
+        user_response = input("Enter y/n: ")
+
+        if user_response == "y":
+            print("Awesome! Glad that is decided. Let's move one!")
+            valid_response = True
+            return albany_entertainment
+
+        while valid_response == False:
+            if user_response == "y":
+                print("Awesome! Glad that is decided. Let's move one!")
+                valid_response = True
+                return albany_entertainment
+            elif user_response == "n":
+                albany_entertainment = random.choice(entertainment_albany)
+                print(f"Oh, sorry you don't like that entertainment. No worries, we can try something else! How about", albany_entertainment + "?")
+                user_response = input("Enter y/n: ")
+            else:
+                albany_entertainment = random.choice(entertainment_albany)
+                print(f"Oh, sorry you don't like that entertainment. No worries, we can try something else! How about", albany_entertainment + "?")
+                user_response = input("Enter y/n: ")
+
+entertainment = entertainment_picker(entertainment_new_haven, entertainment_albany, entertainment_boston, entertainment_hartford, entertainment_new_york)
+
+def restaurant_picker (list, list_one, list_two, list_three, list_four):
+
+    while destination == "Boston":
+        boston_restaurant = random.choice(restaurants_boston)
+        valid_response = False
+        print("We have selected", boston_restaurant , " for your dining option! Does this sounds good?")
+        user_response = input("Enter y/n: ")
+
+        if user_response == "y":
+            print("Awesome! Glad that is decided. Let's move one!")
+            valid_response = True
+            return boston_restaurant
+
+        while valid_response == False:
+            if user_response == "y":
+                print("Awesome! Glad that is decided. Let's move one!")
+                valid_response = True
+                return boston_restaurant
+            elif user_response == "n":
+                boston_restaurant = random.choice(restaurants_boston)
+                print(f"Oh, sorry you don't like that restaurant. No worries, we can try something else! How about", boston_restaurant + "?")
+                user_response = input("Enter y/n: ")
+            else:
+                boston_restaurant = random.choice(restaurants_boston)
+                print(f"Oh, sorry you don't like that restaurant. No worries, we can try something else! How about", boston_restaurant + "?")
+                user_response = input("Enter y/n: ")
+    
+    while destination == "New York City":
+        new_york_restaurant = random.choice(restaurants_new_york)
+        valid_response = False
+        print("We have selected", new_york_restaurant, " for your dining option! Does this sounds good?")
+        user_response = input("Enter y/n: ")
+
+        if user_response == "y":
+            print("Awesome! Glad that is decided. Let's move one!")
+            valid_response = True
+            return new_york_restaurant
+
+        while valid_response == False:
+            if user_response == "y":
+                print("Awesome! Glad that is decided. Let's move one!")
+                valid_response = True
+                return new_york_restaurant
+            elif user_response == "n":
+                new_york_restaurant = random.choice(restaurants_new_york)
+                print(f"Oh, sorry you don't like that restaurant. No worries, we can try something else! How about", new_york_restaurant + "?")
+                user_response = input("Enter y/n: ")
+            else:
+                new_york_restaurant = random.choice(restaurants_new_york)
+                print(f"Oh, sorry you don't like that restaurant. No worries, we can try something else! How about", new_york_restaurant + "?")
+                user_response = input("Enter y/n: ")
+    
+    while destination == "New Haven":
+        new_haven_restaurant = random.choice(restaurants_new_haven)
+        valid_response = False
+        print("We have selected", new_haven_restaurant, " for your dining option! Does this sounds good?")
+        user_response = input("Enter y/n: ")
+
+        if user_response == "y":
+            print("Awesome! Glad that is decided. Let's move one!")
+            valid_response = True
+            return new_haven_restaurant
+
+        while valid_response == False:
+            if user_response == "y":
+                print("Awesome! Glad that is decided. Let's move one!")
+                valid_response = True
+                return new_haven_restaurant
+            elif user_response == "n":
+                new_haven_restaurant = random.choice(restaurants_new_haven)
+                print(f"Oh, sorry you don't like that restaurant. No worries, we can try something else! How about", new_haven_restaurant + "?")
+                user_response = input("Enter y/n: ")
+            else:
+                new_haven_restaurant = random.choice(restaurants_new_haven)
+                print(f"Oh, sorry you don't like that restaurant. No worries, we can try something else! How about", new_haven_restaurant + "?")
+                user_response = input("Enter y/n: ")
+
+    while destination == "Hartford":
+        hartford_restaurant = random.choice(restaurants_hartford)
+        valid_response = False
+        print("We have selected", hartford_restaurant, " for your dining option! Does this sounds good?")
+        user_response = input("Enter y/n: ")
+
+        if user_response == "y":
+            print("Awesome! Glad that is decided. Let's move one!")
+            valid_response = True
+            return hartford_restaurant
+
+        while valid_response == False:
+            if user_response == "y":
+                print("Awesome! Glad that is decided. Let's move one!")
+                valid_response = True
+                return hartford_restaurant
+            elif user_response == "n":
+                hartford_restaurant = random.choice(restaurants_hartford)
+                print(f"Oh, sorry you don't like that restaurant. No worries, we can try something else! How about", hartford_restaurant + "?")
+                user_response = input("Enter y/n: ")
+            else:
+                hartford_restaurant = random.choice(restaurants_hartford)
+                print(f"Oh, sorry you don't like that restaurant. No worries, we can try something else! How about", hartford_restaurant + "?")
+                user_response = input("Enter y/n: ")
+    
+    while destination == "Albany":
+        albany_restaurant = random.choice(restaurants_albany)
+        valid_response = False
+        print("We have selected", albany_restaurant, " for your dining option! Does this sounds good?")
+        user_response = input("Enter y/n: ")
+
+        if user_response == "y":
+            print("Awesome! Glad that is decided. Let's move one!")
+            valid_response = True
+            return albany_restaurant
+
+        while valid_response == False:
+            if user_response == "y":
+                print("Awesome! Glad that is decided. Let's move one!")
+                valid_response = True
+                return albany_restaurant
+            elif user_response == "n":
+                albany_restaurant = random.choice(restaurants_albany)
+                print(f"Oh, sorry you don't like that restaurant. No worries, we can try something else! How about", albany_restaurant + "?")
+                user_response = input("Enter y/n: ")
+            else:
+                albany_restaurant = random.choice(restaurants_albany)
+                print(f"Oh, sorry you don't like that restaurant. No worries, we can try something else! How about", albany_restaurant + "?")
+                user_response = input("Enter y/n: ")
+
+restaurants = restaurant_picker(restaurants_new_haven, restaurants_albany, restaurants_boston, restaurants_hartford, restaurants_new_york)
+
+print("The trip we have generated for you is:")
+print(f"Destination: " , destination)
+print(f"Transportaion: ", transportation)
+print(f"Entertainment: ", entertainment)
+print(f"Restaurant: ", restaurants)
+print("Would you like to finalize this trip?")
+input("Enter y/n: ")
+print(f"Prepare for your dream vacation to come alive! You will be arriving in", destination +" by", transportation + ", where you will spend the day", entertainment + ". You will end the evening dining in style at", restaurants)
+
