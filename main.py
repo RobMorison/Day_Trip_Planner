@@ -36,7 +36,7 @@ def location_picker(list):
     location = random.choice(destinations) 
     valid_response = False
     print("Welcome to the Day Trip Generator! If you aren't sure what you want to do for your vacation, you have come to the right place!")
-    print(f"We have selected",  location , "for your destination! Does this sound good?")(input("Enter y/n:"))
+    print(f"We have selected",  location , "for your destination! Does this sound good?")
     user_response =  input("Enter y/n: ")
            
 
